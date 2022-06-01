@@ -80,13 +80,13 @@
 							float:right;
 						}
 						.nfyWrap .nfyItemLine {
-							float:right;
+							float:right;eve
 							margin-right:5px;
 						}
 						/* Snow Flat hacks */
 						.qam-account-items-wrapper #osnbox {
 							float: right;
-							margin-right:-30px;
+							margin: right -45px;
 						}
 						.qam-account-items-wrapper .nfyWrap {
 							top: 31px;
@@ -111,7 +111,7 @@
 
 				// select and count all in_eventcount that are newer as last visit
 				$eventcount = $this->getEventCount($last_visit, $userid);
-
+				$notifcount = $eventcount;
 				// q2apro notification tooltip
 				if ($eventcount > 0) {
 					if ($eventcount == 1) {  // only one event
@@ -127,8 +127,13 @@
 					$classSuffix = 'nill';  // add notify bubble to user navigation
 				}
 
-				$html = '<div id="osnbox">
-							<a class="osn-new-events-link" title="'.$tooltip.'"><span class="notifybub ntfy-event-'. $classSuffix.'">'.$eventcount.'</span></a>
+				$html = '<div id="osnbox">';
+
+				if ($notifcount > 0) {
+					$html .= '<span class="badge">'.$notifcount.'</span>';
+				}							
+							
+				$html .=	'<a class="osn-new-events-link" title="'.$tooltip.'"><span style="background:transparent;" class="notifybub ntfy-event-'. $classSuffix.'">&#x1F514;</span></a>
 						</div>';
 
 				// add to user panel
